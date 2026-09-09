@@ -227,3 +227,28 @@ for (let i = 0; i < 100; i++) {
 
     starsContainer.appendChild(star);
 }
+// ❤️ Floating hearts
+const heartsContainer = document.getElementById("hearts-container");
+
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.classList.add("floating-heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    const size = Math.random() * 20 + 15;
+    heart.style.fontSize = size + "px";
+
+    const duration = Math.random() * 4 + 5;
+    heart.style.animationDuration = duration + "s";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+setInterval(createHeart, 500);
