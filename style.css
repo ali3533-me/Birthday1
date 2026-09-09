@@ -1,0 +1,629 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0d0015;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Main Hero Section */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background:
+        radial-gradient(circle at top, #5c0038, transparent 45%),
+        linear-gradient(135deg, #17001f, #3b002c, #120016);
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.small-text {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    color: #ffd6e7;
+}
+
+h1 {
+    font-size: clamp(45px, 8vw, 90px);
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 20px #ff2f92;
+}
+
+h2 {
+    font-size: clamp(40px, 7vw, 75px);
+    color: #ff4f9a;
+    margin: 10px 0 25px;
+    text-shadow: 0 0 25px #ff1f86;
+}
+
+.message {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #f9dbe9;
+    margin: 0 auto 35px;
+    max-width: 650px;
+}
+
+/* Button */
+
+button {
+    border: none;
+    padding: 16px 35px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff176f, #ff4fa0);
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255, 40, 140, 0.7);
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(255, 40, 140, 1);
+}
+
+/* Floating Hearts */
+
+.hearts span {
+    position: absolute;
+    bottom: -50px;
+    font-size: 30px;
+    animation: floatHeart 8s linear infinite;
+    opacity: 0;
+}
+
+.hearts span:nth-child(1) {
+    left: 10%;
+    animation-delay: 1s;
+}
+
+.hearts span:nth-child(2) {
+    left: 30%;
+    animation-delay: 3s;
+}
+
+.hearts span:nth-child(3) {
+    left: 50%;
+    animation-delay: 5s;
+}
+
+.hearts span:nth-child(4) {
+    left: 70%;
+    animation-delay: 2s;
+}
+
+.hearts span:nth-child(5) {
+    left: 90%;
+    animation-delay: 4s;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Surprise Section */
+
+.surprise {
+    min-height: 100vh;
+    padding: 100px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #26001f, #100013);
+}
+
+.surprise h2 {
+    font-size: clamp(35px, 6vw, 65px);
+    margin-bottom: 30px;
+}
+
+.surprise p {
+    max-width: 700px;
+    font-size: 20px;
+    line-height: 1.8;
+    color: #f8dce9;
+}
+
+.birthday-date {
+    margin: 40px 0;
+    padding: 20px 35px;
+    border: 2px solid #ff4f9a;
+    border-radius: 50px;
+    font-size: 25px;
+    color: #ffffff;
+    box-shadow: 0 0 25px rgba(255, 50, 150, 0.5);
+}
+
+.love {
+    font-size: 24px !important;
+}
+
+.love strong {
+    color: #ff4f9a;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 20px;
+    }
+
+    .small-text {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .message {
+        font-size: 17px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 14px 28px;
+    }
+
+    .birthday-date {
+        font-size: 20px;
+        padding: 16px 25px;
+    }
+}
+```
+/* =========================
+   ANIMATED BIRTHDAY CAKE
+========================= */
+
+.cake-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.cake {
+    position: relative;
+    width: 220px;
+    height: 180px;
+    margin: 0 auto;
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+/* Bottom layer */
+
+.cake-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 180px;
+    height: 65px;
+    background: #c92868;
+    border-radius: 10px 10px 20px 20px;
+    box-shadow: 0 8px 0 #8e1749;
+}
+
+/* Main cake */
+
+.cake-body {
+    position: absolute;
+    bottom: 55px;
+    left: 30px;
+    width: 160px;
+    height: 65px;
+    background: #ff78ad;
+    border-radius: 10px;
+}
+
+/* Cream */
+
+.cream {
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 160px;
+    height: 25px;
+    background: #fff0f7;
+    border-radius: 50%;
+}
+
+/* Cake top */
+
+.cake-top {
+    position: absolute;
+    bottom: 105px;
+    left: 40px;
+    width: 140px;
+    height: 25px;
+    background: #ffb6d5;
+    border-radius: 50%;
+}
+
+/* Candle */
+
+.candle {
+    position: absolute;
+    z-index: 5;
+    bottom: 125px;
+    left: 98px;
+    width: 25px;
+    height: 55px;
+    background: repeating-linear-gradient(
+        45deg,
+        #ffffff,
+        #ffffff 7px,
+        #ff4f9a 7px,
+        #ff4f9a 14px
+    );
+    border-radius: 5px;
+}
+
+/* Flame */
+
+.flame {
+    position: absolute;
+    top: -38px;
+    left: 1px;
+    font-size: 28px;
+    animation: flameFlicker 0.6s ease-in-out infinite alternate;
+}
+
+/* Cake floating animation */
+
+@keyframes cakeFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Flame animation */
+
+@keyframes flameFlicker {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.25) rotate(4deg);
+    }
+}
+
+/* Cake message */
+
+.cake-text {
+    margin-top: 25px;
+    font-size: 22px !important;
+    color: #ffd1e5 !important;
+    text-shadow: 0 0 15px #ff4f9a;
+    animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mobile cake */
+
+@media (max-width: 600px) {
+
+    .cake {
+        transform: scale(0.85);
+    }
+
+    .cake-text {
+        font-size: 19px !important;
+    }
+}
+/* INTERACTIVE CANDLE */
+
+.candle {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.candle:hover {
+    transform: scale(1.08);
+}
+
+.flame.off {
+    display: none;
+}
+
+/* Birthday wish message */
+
+.wish-message {
+    margin-top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff4f9a;
+    text-shadow:
+        0 0 10px #ff4f9a,
+        0 0 20px #ff4f9a,
+        0 0 30px #ff4f9a;
+
+    opacity: 0;
+    transform: scale(0.5);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.wish-message.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (max-width: 600px) {
+
+    .wish-message {
+        font-size: 23px;
+    }
+}
+/* =========================
+   LOVE LETTER SECTION
+========================= */
+
+.love-letter {
+    width: 90%;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background: #fffaf5;
+    border: 2px solid #e8b4b8;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Small decorative hearts */
+
+.love-letter::before,
+.love-letter::after {
+    content: "❤";
+    position: absolute;
+    font-size: 35px;
+    opacity: 0.2;
+    animation: floatingHeart 3s ease-in-out infinite;
+}
+
+.love-letter::before {
+    top: 15px;
+    left: 20px;
+}
+
+.love-letter::after {
+    bottom: 15px;
+    right: 20px;
+    animation-delay: 1s;
+}
+
+/* Love letter heading */
+
+.love-letter h2 {
+    color: #b83250;
+    font-size: 32px;
+    margin-bottom: 25px;
+    font-family: Georgia, serif;
+}
+
+/* Letter text */
+
+.love-letter p {
+    color: #4a3035;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    font-family: Georgia, serif;
+}
+
+/* Signature */
+
+.love-letter .signature {
+    margin-top: 30px;
+    color: #b83250;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Heart animation */
+
+@keyframes floatingHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+
+    .love-letter {
+        width: 85%;
+        padding: 30px 20px;
+        margin: 40px auto;
+    }
+
+    .love-letter h2 {
+        font-size: 26px;
+    }
+
+    .love-letter p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .love-letter .signature {
+        font-size: 19px;
+    }
+}
+/* Love letter opening animation */
+
+.love-letter {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 1s ease;
+}
+
+/* This class will be added by JavaScript */
+
+.love-letter.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+/* =========================
+   BIRTHDAY COUNTDOWN
+========================= */
+
+.countdown-section {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.countdown-section h2 {
+    color: #b83250;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-family: Georgia, serif;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.countdown-box {
+    width: 120px;
+    padding: 20px 10px;
+    background: rgba(255, 250, 245, 0.95);
+    border: 2px solid #e8b4b8;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.countdown-box span {
+    display: block;
+    color: #b83250;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.countdown-box small {
+    display: block;
+    margin-top: 8px;
+    color: #4a3035;
+    font-size: 15px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .countdown {
+        gap: 10px;
+    }
+
+    .countdown-box {
+        width: 75px;
+        padding: 15px 8px;
+    }
+
+    .countdown-box span {
+        font-size: 27px;
+    }
+
+    .countdown-box small {
+        font-size: 13px;
+    }
+
+    .countdown-section h2 {
+        font-size: 24px;
+    }
+}
+/* Music Button */
+#musicBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: #b83250;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+#musicBtn:hover {
+    transform: scale(1.05);
+}
