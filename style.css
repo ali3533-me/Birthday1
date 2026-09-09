@@ -693,4 +693,39 @@ body > *:not(.stars):not(.moon) {
     position: relative;
     z-index: 2;
 }
+/* ❤️ Floating Hearts */
+#hearts-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 3;
+}
 
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 25px;
+    animation: floatHeart linear forwards;
+    opacity: 0;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(20deg) scale(1.2);
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(-20deg) scale(0.8);
+        opacity: 0;
+    }
+}
