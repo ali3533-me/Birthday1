@@ -252,3 +252,39 @@ function createHeart() {
 }
 
 setInterval(createHeart, 500);
+// 🎉 Automatic Birthday Confetti
+function createConfetti() {
+    for (let i = 0; i < 120; i++) {
+        const confetti = document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "vw";
+
+        confetti.style.backgroundColor =
+            `hsl(${Math.random() * 360}, 100%, 60%)`;
+
+        confetti.style.animationDuration =
+            (Math.random() * 2 + 2) + "s";
+
+        confetti.style.animationDelay =
+            Math.random() * 0.8 + "s";
+
+        confetti.style.width =
+            (Math.random() * 8 + 5) + "px";
+
+        confetti.style.height =
+            (Math.random() * 12 + 5) + "px";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 4000);
+    }
+}
+
+// Start confetti when page loads
+window.addEventListener("load", () => {
+    createConfetti();
+});
