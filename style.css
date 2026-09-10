@@ -772,32 +772,3 @@ body > *:not(.stars):not(.moon) {
         opacity: 0;
     }
 }
-/* 🎆 FIREWORKS */
-
-#fireworks-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 9997;
-}
-
-.firework {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    box-shadow:
-        0 0 10px currentColor,
-        0 0 20px currentColor,
-        0 0 30px currentColor;
-}
-
-.firework-particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: currentColor;
-    box-shadow: 0 0 8px currentColor;
-}
