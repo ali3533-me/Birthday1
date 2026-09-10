@@ -291,137 +291,85 @@ window.addEventListener("load", function () {
     setInterval(createRosePetal, 600);
 
 });
-// 🎆 FIREWORKS
+// 🎆 REALISTIC FIREWORKS
 
-function startFireworks() {
+function fireworks() {
 
     const colors = [
         "#ff1744",
         "#ffd700",
         "#ff69b4",
         "#00ffff",
-        "#ffffff"
+        "#ffffff",
+        "#ff8c00"
     ];
 
-    function launchFirework() {
+    for (let explosion = 0; explosion < 8; explosion++) {
 
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * (window.innerHeight * 0.5);
+        setTimeout(() => {
 
-        const color =
-            colors[Math.floor(Math.random() * colors.length)];
+            const x = Math.random() * 80 + 10;
+            const y = Math.random() * 45 + 10;
 
-        const particles = [];
+            const color =
+                colors[Math.floor(Math.random() * colors.length)];
 
-        for (let i = 0; i < 35; i++) {
+            for (let i = 0; i < 45; i++) {
 
-            const particle = document.createElement("div");
+                const particle =
+                    document.createElement("div");
 
-            particle.innerHTML = "✨";
+                particle.style.position = "fixed";
+                particle.style.width = "5px";
+                particle.style.height = "5px";
+                particle.style.borderRadius = "50%";
+                particle.style.background = color;
+                particle.style.boxShadow =
+                    `0 0 8px ${color}, 0 0 15px ${color}`;
 
-            particle.style.position = "fixed";
-            particle.style.left = x + "px";
-            particle.style.top = y + "px";
-            particle.style.fontSize = "12px";
-            particle.style.color = color;
-            particle.style.zIndex = "10000";
-            particle.style.pointerEvents = "none";
+                particle.style.left = x + "vw";
+                particle.style.top = y + "vh";
 
-            document.body.appendChild(particle);
+                particle.style.zIndex = "10000";
+                particle.style.pointerEvents = "none";
 
-            const angle = (Math.PI * 2 * i) / 35;
-            const distance = Math.random() * 120 + 50;
+                document.body.appendChild(particle);
 
-            particle.animate(
-                [
+                const angle =
+                    (Math.PI * 2 * i) / 45;
+
+                const distance =
+                    Math.random() * 130 + 50;
+
+                const moveX =
+                    Math.cos(angle) * distance;
+
+                const moveY =
+                    Math.sin(angle) * distance;
+
+                particle.animate(
+                    [
+                        {
+                            transform: "translate(0, 0) scale(1)",
+                            opacity: 1
+                        },
+                        {
+                            transform:
+                                `translate(${moveX}px, ${moveY}px) scale(0)`,
+                            opacity: 0
+                        }
+                    ],
                     {
-                        transform: "translate(0, 0) scale(1)",
-                        opacity: 1
-                    },
-                    {
-                        transform:
-                            `translate(
-                                ${Math.cos(angle) * distance}px,
-                                ${Math.sin(angle) * distance}px
-                            ) scale(0)`,
-                        opacity: 0
+                        duration: 1400,
+                        easing: "cubic-bezier(.1,.7,.3,1)"
                     }
-                ],
-                {
-                    duration: 1200,
-                    easing: "ease-out"
-                }
-            );
+                );
 
-            particles.push(particle);
+                setTimeout(() => {
+                    particle.remove();
+                }, 1400);
+            }
 
-            setTimeout(() => {
-                particle.remove();
-            }, 1200);
-        }
-    }
-
-    // Fireworks for 10 seconds
-    let count = 0;
-
-    const fireworksInterval = setInterval(() => {
-
-        launchFirework();
-
-        count++;
-
-        if (count >= 8) {
-            clearInterval(fireworksInterval);
-        }
-
-    }, 700);
-}
-// 🎆 FIREWORKS
-
-function fireworks() {
-
-    for (let i = 0; i < 12; i++) {
-
-        setTimeout(function () {
-
-            const firework = document.createElement("div");
-
-            firework.innerHTML = "🎆";
-
-            firework.style.position = "fixed";
-            firework.style.left = Math.random() * 80 + 10 + "vw";
-            firework.style.top = Math.random() * 50 + 5 + "vh";
-            firework.style.fontSize = "50px";
-            firework.style.zIndex = "10000";
-            firework.style.pointerEvents = "none";
-
-            document.body.appendChild(firework);
-
-            firework.animate(
-                [
-                    {
-                        transform: "scale(0)",
-                        opacity: 0
-                    },
-                    {
-                        transform: "scale(1.5)",
-                        opacity: 1
-                    },
-                    {
-                        transform: "scale(0.5)",
-                        opacity: 0
-                    }
-                ],
-                {
-                    duration: 1000
-                }
-            );
-
-            setTimeout(function () {
-                firework.remove();
-            }, 1000);
-
-        }, i * 700);
-
+        }, explosion * 650);
     }
 }
