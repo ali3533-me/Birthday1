@@ -729,3 +729,41 @@ body > *:not(.stars):not(.moon) {
         opacity: 0;
     }
 }
+/* 🌹 Falling Rose Petals */
+
+#petals-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 4;
+}
+
+.rose-petal {
+    position: absolute;
+    top: -50px;
+    font-size: 25px;
+    animation: fallPetal linear forwards;
+    opacity: 0;
+}
+
+@keyframes fallPetal {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(50px) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(-50px) rotate(360deg);
+        opacity: 0;
+    }
+}
