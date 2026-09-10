@@ -291,3 +291,70 @@ window.addEventListener("load", function () {
     setInterval(createRosePetal, 600);
 
 });
+// 🎆 FIREWORKS
+
+const fireworksContainer =
+    document.getElementById("fireworks-container");
+
+function createFirework() {
+
+    const x = Math.random() * 80 + 10;
+    const y = Math.random() * 45 + 10;
+
+    const colors = [
+        "#ff1744",
+        "#ffd700",
+        "#ff69b4",
+        "#ffffff",
+        "#ff4500"
+    ];
+
+    const color =
+        colors[Math.floor(Math.random() * colors.length)];
+
+    for (let i = 0; i < 30; i++) {
+
+        const particle =
+            document.createElement("div");
+
+        particle.className = "firework-particle";
+
+        particle.style.color = color;
+        particle.style.left = x + "vw";
+        particle.style.top = y + "vh";
+
+        fireworksContainer.appendChild(particle);
+
+        const angle =
+            (Math.PI * 2 * i) / 30;
+
+        const distance =
+            Math.random() * 100 + 50;
+
+        particle.animate(
+            [
+                {
+                    transform: "translate(0, 0)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        `translate(
+                            ${Math.cos(angle) * distance}px,
+                            ${Math.sin(angle) * distance}px
+                        )`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration: 1200,
+                easing: "ease-out"
+            }
+        );
+
+        setTimeout(() => {
+            particle.remove();
+        }, 1200);
+    }
+}
+setInterval(createFirework, 2500);
