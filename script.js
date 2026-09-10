@@ -3,8 +3,28 @@ function startCelebration() {
         behavior: "smooth"
     });
 
+    // 🎉 Confetti
     createConfetti();
+
+    // 🎆 Fireworks
     fireworks();
+
+    // 🎵 Start music
+    const music = document.getElementById("birthdayMusic");
+
+    if (music) {
+        music.play()
+            .then(() => {
+                const button = document.getElementById("musicBtn");
+
+                if (button) {
+                    button.textContent = "⏸️ Pause Music";
+                }
+            })
+            .catch(() => {
+                console.log("Music needs user interaction.");
+            });
+    }
 }
 function createConfetti() {
     const confettiSymbols = ["❤️", "💕", "💖", "💗", "✨", "🎉", "🎊"];
