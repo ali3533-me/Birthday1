@@ -4,9 +4,7 @@ function startCelebration() {
     });
 
     createConfetti();
-
-    // 🎆 Start fireworks
-    startFireworks();
+    fireworks();
 }
 function createConfetti() {
     const confettiSymbols = ["❤️", "💕", "💖", "💗", "✨", "🎉", "🎊"];
@@ -377,4 +375,53 @@ function startFireworks() {
         }
 
     }, 700);
+}
+// 🎆 FIREWORKS
+
+function fireworks() {
+
+    for (let i = 0; i < 12; i++) {
+
+        setTimeout(function () {
+
+            const firework = document.createElement("div");
+
+            firework.innerHTML = "🎆";
+
+            firework.style.position = "fixed";
+            firework.style.left = Math.random() * 80 + 10 + "vw";
+            firework.style.top = Math.random() * 50 + 5 + "vh";
+            firework.style.fontSize = "50px";
+            firework.style.zIndex = "10000";
+            firework.style.pointerEvents = "none";
+
+            document.body.appendChild(firework);
+
+            firework.animate(
+                [
+                    {
+                        transform: "scale(0)",
+                        opacity: 0
+                    },
+                    {
+                        transform: "scale(1.5)",
+                        opacity: 1
+                    },
+                    {
+                        transform: "scale(0.5)",
+                        opacity: 0
+                    }
+                ],
+                {
+                    duration: 1000
+                }
+            );
+
+            setTimeout(function () {
+                firework.remove();
+            }, 1000);
+
+        }, i * 700);
+
+    }
 }
