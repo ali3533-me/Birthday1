@@ -4,8 +4,10 @@ function startCelebration() {
     });
 
     createConfetti();
-}
 
+    // 🎆 Start fireworks
+    startFireworks();
+}
 function createConfetti() {
     const confettiSymbols = ["❤️", "💕", "💖", "💗", "✨", "🎉", "🎊"];
 
@@ -291,3 +293,88 @@ window.addEventListener("load", function () {
     setInterval(createRosePetal, 600);
 
 });
+// 🎆 FIREWORKS
+
+function startFireworks() {
+
+    const colors = [
+        "#ff1744",
+        "#ffd700",
+        "#ff69b4",
+        "#00ffff",
+        "#ffffff"
+    ];
+
+    function launchFirework() {
+
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * (window.innerHeight * 0.5);
+
+        const color =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        const particles = [];
+
+        for (let i = 0; i < 35; i++) {
+
+            const particle = document.createElement("div");
+
+            particle.innerHTML = "✨";
+
+            particle.style.position = "fixed";
+            particle.style.left = x + "px";
+            particle.style.top = y + "px";
+            particle.style.fontSize = "12px";
+            particle.style.color = color;
+            particle.style.zIndex = "10000";
+            particle.style.pointerEvents = "none";
+
+            document.body.appendChild(particle);
+
+            const angle = (Math.PI * 2 * i) / 35;
+            const distance = Math.random() * 120 + 50;
+
+            particle.animate(
+                [
+                    {
+                        transform: "translate(0, 0) scale(1)",
+                        opacity: 1
+                    },
+                    {
+                        transform:
+                            `translate(
+                                ${Math.cos(angle) * distance}px,
+                                ${Math.sin(angle) * distance}px
+                            ) scale(0)`,
+                        opacity: 0
+                    }
+                ],
+                {
+                    duration: 1200,
+                    easing: "ease-out"
+                }
+            );
+
+            particles.push(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 1200);
+        }
+    }
+
+    // Fireworks for 10 seconds
+    let count = 0;
+
+    const fireworksInterval = setInterval(() => {
+
+        launchFirework();
+
+        count++;
+
+        if (count >= 8) {
+            clearInterval(fireworksInterval);
+        }
+
+    }, 700);
+}
