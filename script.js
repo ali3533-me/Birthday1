@@ -144,7 +144,7 @@ function updateCountdown() {
     let birthday = new Date(
         now.getFullYear(),
         8, // September
-        10,
+        11,
         0,
         0,
         0
@@ -156,7 +156,7 @@ function updateCountdown() {
         birthday = new Date(
             now.getFullYear() + 1,
             8,
-            10,
+            11,
             0,
             0,
             0
@@ -252,39 +252,53 @@ function createHeart() {
 }
 
 setInterval(createHeart, 500);
-// 🎉 Automatic Birthday Confetti
+// 🎉 Birthday Confetti
 function createConfetti() {
-    for (let i = 0; i < 120; i++) {
+    const confettiSymbols = ["❤️", "💕", "💖", "💗", "✨", "🎉", "🎊"];
+
+    for (let i = 0; i < 100; i++) {
         const confetti = document.createElement("div");
 
-        confetti.classList.add("confetti");
+        confetti.innerHTML =
+            confettiSymbols[
+                Math.floor(Math.random() * confettiSymbols.length)
+            ];
 
+        confetti.style.position = "fixed";
         confetti.style.left = Math.random() * 100 + "vw";
-
-        confetti.style.backgroundColor =
-            `hsl(${Math.random() * 360}, 100%, 60%)`;
-
-        confetti.style.animationDuration =
-            (Math.random() * 2 + 2) + "s";
-
-        confetti.style.animationDelay =
-            Math.random() * 0.8 + "s";
-
-        confetti.style.width =
-            (Math.random() * 8 + 5) + "px";
-
-        confetti.style.height =
-            (Math.random() * 12 + 5) + "px";
+        confetti.style.top = "-30px";
+        confetti.style.fontSize = Math.random() * 20 + 15 + "px";
+        confetti.style.zIndex = "9999";
+        confetti.style.pointerEvents = "none";
 
         document.body.appendChild(confetti);
 
+        const duration = Math.random() * 3 + 2;
+
+        confetti.animate(
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+                {
+                    transform: "translateY(110vh) rotate(720deg)",
+                    opacity: 0
+                }
+            ],
+            {
+                duration: duration * 1000,
+                easing: "linear"
+            }
+        );
+
         setTimeout(() => {
             confetti.remove();
-        }, 4000);
+        }, duration * 1000);
     }
 }
 
-// Start confetti when page loads
-window.addEventListener("load", () => {
-    createConfetti();
+// 🎉 Start confetti automatically
+window.addEventListener("load", function () {
+    setTimeout(createConfetti, 500);
 });
