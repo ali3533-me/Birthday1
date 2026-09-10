@@ -144,7 +144,7 @@ function updateCountdown() {
     let birthday = new Date(
         now.getFullYear(),
         8, // September
-        11,
+        19,
         0,
         0,
         0
@@ -156,7 +156,7 @@ function updateCountdown() {
         birthday = new Date(
             now.getFullYear() + 1,
             8,
-            11,
+            19,
             0,
             0,
             0
