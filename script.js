@@ -50,6 +50,13 @@ function createConfetti() {
         }, duration * 1000);
     }
 }
+// 🎉 Start confetti automatically when website loads
+
+window.addEventListener("load", function () {
+    setTimeout(() => {
+        createConfetti();
+    }, 500);
+});
 function blowCandle() {
 
     const flame = document.getElementById("flame");
@@ -252,53 +259,3 @@ function createHeart() {
 }
 
 setInterval(createHeart, 500);
-// 🎉 Birthday Confetti
-function createConfetti() {
-    const confettiSymbols = ["❤️", "💕", "💖", "💗", "✨", "🎉", "🎊"];
-
-    for (let i = 0; i < 100; i++) {
-        const confetti = document.createElement("div");
-
-        confetti.innerHTML =
-            confettiSymbols[
-                Math.floor(Math.random() * confettiSymbols.length)
-            ];
-
-        confetti.style.position = "fixed";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.top = "-30px";
-        confetti.style.fontSize = Math.random() * 20 + 15 + "px";
-        confetti.style.zIndex = "9999";
-        confetti.style.pointerEvents = "none";
-
-        document.body.appendChild(confetti);
-
-        const duration = Math.random() * 3 + 2;
-
-        confetti.animate(
-            [
-                {
-                    transform: "translateY(0) rotate(0deg)",
-                    opacity: 1
-                },
-                {
-                    transform: "translateY(110vh) rotate(720deg)",
-                    opacity: 0
-                }
-            ],
-            {
-                duration: duration * 1000,
-                easing: "linear"
-            }
-        );
-
-        setTimeout(() => {
-            confetti.remove();
-        }, duration * 1000);
-    }
-}
-
-// 🎉 Start confetti automatically
-window.addEventListener("load", function () {
-    setTimeout(createConfetti, 500);
-});
