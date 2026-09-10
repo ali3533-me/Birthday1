@@ -259,3 +259,32 @@ function createHeart() {
 }
 
 setInterval(createHeart, 500);
+// 🌹 Falling Rose Petals
+
+const petalsContainer = document.getElementById("petals-container");
+
+function createRosePetal() {
+
+    const petal = document.createElement("div");
+
+    petal.classList.add("rose-petal");
+
+    petal.innerHTML = "🌹";
+
+    petal.style.left = Math.random() * 100 + "vw";
+
+    const size = Math.random() * 15 + 15;
+    petal.style.fontSize = size + "px";
+
+    const duration = Math.random() * 5 + 5;
+    petal.style.animationDuration = duration + "s";
+
+    petalsContainer.appendChild(petal);
+
+    setTimeout(() => {
+        petal.remove();
+    }, duration * 1000);
+}
+
+// Create a new rose every 700 milliseconds
+setInterval(createRosePetal, 700);
