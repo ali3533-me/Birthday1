@@ -259,32 +259,35 @@ function createHeart() {
 }
 
 setInterval(createHeart, 500);
-// 🌹 Falling Rose Petals
+// 🌹 FALLING ROSE PETALS
 
-const petalsContainer = document.getElementById("petals-container");
+window.addEventListener("load", function () {
 
-function createRosePetal() {
+    const petalsContainer = document.getElementById("petals-container");
 
-    const petal = document.createElement("div");
+    function createRosePetal() {
 
-    petal.classList.add("rose-petal");
+        const petal = document.createElement("div");
 
-    petal.innerHTML = "🌹";
+        petal.className = "rose-petal";
+        petal.textContent = "🌹";
 
-    petal.style.left = Math.random() * 100 + "vw";
+        petal.style.left = Math.random() * 100 + "vw";
 
-    const size = Math.random() * 15 + 15;
-    petal.style.fontSize = size + "px";
+        const size = Math.random() * 20 + 15;
+        petal.style.fontSize = size + "px";
 
-    const duration = Math.random() * 5 + 5;
-    petal.style.animationDuration = duration + "s";
+        const duration = Math.random() * 5 + 5;
+        petal.style.animationDuration = duration + "s";
 
-    petalsContainer.appendChild(petal);
+        petalsContainer.appendChild(petal);
 
-    setTimeout(() => {
-        petal.remove();
-    }, duration * 1000);
-}
+        setTimeout(function () {
+            petal.remove();
+        }, duration * 1000);
+    }
 
-// Create a new rose every 700 milliseconds
-setInterval(createRosePetal, 700);
+    // Create petals continuously
+    setInterval(createRosePetal, 600);
+
+});
